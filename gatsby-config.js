@@ -3,6 +3,8 @@
  */
 const config = require('./meta/config')
 
+// console.log(config)
+
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
 module.exports = {

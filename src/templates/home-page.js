@@ -6,6 +6,16 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Offerings from '../components/Offerings'
 import Testimonials from '../components/Testimonials'
+import CIPLCarousel from '../components/CIPLCarousel'
+// import CIPLTitle from '../components/CIPLTitle'
+import ReactRotatingText from 'react-rotating-text'
+import img1 from '../../static/img/carousel/1.jpg'
+import img2 from '../../static/img/carousel/2.jpg'
+import img3 from '../../static/img/carousel/test1.gif'
+
+const slidesMain = [{ imgSrc: img3, imgText: 'Enjoy madi' }, { imgSrc: img2, imgText: 'Enjoy madi' }, { imgSrc: img1, imgText: 'Enjoy madi' }]
+// const slidesMain = [{ imgSrc: img3, imgText: 'Enjoy madi' }, { imgSrc: img2, imgText: 'Enjoy madi' }, { imgSrc: img1, imgText: 'Enjoy madi' }]
+const slidesSide = [{ imgSrc: img1, imgText: 'Enjoy madi' }, { imgSrc: img2, imgText: 'Enjoy madi' }, { imgSrc: img3, imgText: 'Enjoy madi' }]
 
 export const HomePageTemplate = ({
   title,
@@ -21,16 +31,22 @@ export const HomePageTemplate = ({
       <title>{meta_title}</title>
       <meta name='description' content={meta_description} />
     </Helmet>
-    <section className='hero is-primary is-bold'>
+    <section style={{ background: '#191b67'}}className='hero is-primary is-bold'>
       <div className='hero-body'>
         <div className='container'>
           <div className='columns'>
-            <div className='column is-10 is-offset-1'>
-              <div className='section'>
-                <h1 className='title'>
-                  {title}
-                </h1>
+            <div className='column is-12'>
+              <h1 style={{ textAlign: 'center' }} className='title'>
+                {/* <CIPLTitle /> */}
+                {/* {title} =  */}
+                <ReactRotatingText items={['Organizational Transformation', 'Leadership Development', 'Executive Coaching', 'Individual Excellence']} />
+              </h1>
+              <div style={{display: 'flex', flexDirection: 'row'}} className='row'>
+                <CIPLCarousel slides={slidesSide} />
+                <CIPLCarousel slides={slidesMain} />
+                <CIPLCarousel slides={slidesSide} />
               </div>
+
             </div>
           </div>
         </div>
@@ -38,21 +54,18 @@ export const HomePageTemplate = ({
     </section>
     <section className='section section--gradient'>
       <div className='container'>
-
-        <div className='section'>
-          <div className='columns'>
-            <div className='column is-10 is-offset-1'>
-              <div className='content'>
-                <div>
-                  <h3 className='has-text-weight-semibold is-size-2'>
-                    {heading}
-                  </h3>
-                  <p>{description}</p>
-                </div>
-                <Offerings gridItems={offerings.blurbs} />
-                <h2 className='has-text-weight-semibold is-size-2'>Testimonials</h2>
-                <Testimonials testimonials={testimonials} />
+        <div className='columns'>
+          <div className='column is-12 is-offest-1'>
+            <div className='content'>
+              <div>
+                <h3 style={{textAlign: 'center'}} className='has-text-weight-semibold is-size-2'>
+                  {heading}
+                </h3>
+                <p style={{ textAlign: 'center'}}>{description}</p>
               </div>
+              <Offerings gridItems={offerings.blurbs} />
+              <h2 className='has-text-weight-semibold is-size-2'>Testimonials</h2>
+              <Testimonials testimonials={testimonials} />
             </div>
           </div>
         </div>
